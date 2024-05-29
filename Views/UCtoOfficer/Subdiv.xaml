@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Praktik_Work_2.Views.UCtoOfficer.Subdiv"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Praktik_Work_2.Views.UCtoOfficer" xmlns:viewmodels="clr-namespace:Praktik_Work_2.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:SubdivViewModel}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <!-- Style for wrapping text blocks in the DataGrid -->
+        <Style x:Key="WrappedTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <!-- Style for centering DataGrid column headers -->
+        <Style x:Key="CenteredHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="5">
+
+            <Button Content="Добавить" Margin="5 170 0 0" Height="45" MinHeight="30" MinWidth="150" Width="180" FontSize="20"
+                    HorizontalAlignment="Left" Foreground="White" Background="#AA5500" Click="Add_Click"/>
+            <Button Content="Изменить" Margin="5 40 0 0" Height="45" MinHeight="30" MinWidth="150" Width="180" FontSize="20" 
+                    HorizontalAlignment="Left" Foreground="White" Background="#AA5500" Click="Edit_Click"/>
+            <Button Content="Удалить" Margin="5 40 0 0" Height="45" MinHeight="30" MinWidth="150" Width="180" FontSize="20" 
+                    HorizontalAlignment="Left" Foreground="White" Background="#AA5500" Click="Del_Click"/>
+        </StackPanel>
+
+        <DataGrid x:Name="_subdivList" Grid.Column="1" MinWidth="690" MinHeight="550" AutoGenerateColumns="False" CanUserAddRows="False" Margin="10" ItemsSource="{Binding Subdivision}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер подразделения" Binding="{Binding SubdivisionId}" Width="*" MinWidth="100" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}" />
+                <DataGridTextColumn Header="Название подразделения" Binding="{Binding SubdivisionName}" Width="*" MinWidth="150" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}" />
+                <DataGridTextColumn Header="Код подразделения" Binding="{Binding SubdivisionNumber, StringFormat={}№{0}}" Width="*" MinWidth="150" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}" />
+                <DataGridTextColumn Header="Командир подразделения" Binding="{Binding SubdivisionCommander}" Width="*" MinWidth="160" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}" />
+                <DataGridTextColumn Header="Расположение подразделения" Binding="{Binding SubdivisionLocate}" Width="*" MinWidth="180" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}" />
+                <DataGridTextColumn Header="Дата основания" Binding="{Binding DateAppear, StringFormat='dd.MM.yyyy'}" Width="*" MinWidth="150" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

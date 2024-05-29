@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="Praktik_Work_2.Views.UCtoOfficer.Soldrs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Praktik_Work_2.Views.UCtoOfficer" 
+             xmlns:local1="clr-namespace:Praktik_Work_2.Helper"
+             xmlns:media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+             xmlns:loc="clr-namespace:Praktik_Work_2.Helper"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+
+        <!-- Style for wrapping text blocks in the DataGrid -->
+        <Style x:Key="WrappedTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <!-- Style for centering DataGrid column headers -->
+        <Style x:Key="CenteredHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="5">
+            <TextBlock Text="Поиск по подразделению:" Margin="5 100 0 0" Foreground="Black"/>
+            <TextBox x:Name="SubdSearch" Margin="5"/>
+            <Button x:Name="ButSubSearch" Content="Поиск" Margin="5" Width="150" HorizontalAlignment="Left" Click="ButSubSearch_Click"/>
+
+            <TextBlock Text="Поиск по форме службы:" Margin="5 0 0 0" Foreground="Black"/>
+            <TextBox x:Name="DutyFormSearch" Margin="5"/>
+            <Button x:Name="ButDutyFormSearch" Content="Поиск" Margin="5" Width="150" HorizontalAlignment="Left" Click="ButDutyFormSearch_Click"/>
+
+            <TextBlock Text="Поиск по званию:" Margin="5" Foreground="Black"/>
+            <TextBox x:Name="RankSearch" Margin="5"/>
+            <Button x:Name="ButRankSearch" Content="Поиск" Margin="5" Width="150" HorizontalAlignment="Left" Click="ButRankSearch_Click"/>
+
+            <Button Content="Сброс" Margin="5 10 0 0" Width="150" HorizontalAlignment="Left" Click="ButSubReset_Click"/>
+
+
+            <Button Content="Добавить" Margin="5 50 0 0" Height="45" MinHeight="30" MinWidth="150" Width="180" FontSize="20" 
+                    HorizontalAlignment="Left" Foreground="White" Background="#AA5500" Click="Add_Click"/>
+            <Button Content="Изменить" Margin="5 40 0 0" Height="45" MinHeight="30" MinWidth="150" Width="180" FontSize="20" 
+                    HorizontalAlignment="Left" Foreground="White" Background="#AA5500" Click="Edit_Click"/>
+            <Button Content="Удалить" Margin="5 40 0 0" Height="45" MinHeight="30" MinWidth="150" Width="180" FontSize="20" 
+                    HorizontalAlignment="Left" Foreground="White" Background="#AA5500" Click="Del_Click"/>
+        </StackPanel>
+
+
+        <DataGrid x:Name="_soldiersList" Grid.Column="1" MinWidth="700" IsReadOnly="True" HorizontalScrollBarVisibility="Disabled"
+                  AutoGenerateColumns="False" CanUserAddRows="False" Margin="10" ItemsSource="{Binding Soldiers}">
+            <DataGrid.Columns>
+                
+                <DataGridTextColumn Header="Номер солдата" IsReadOnly="True" Binding="{Binding SoldierId}" Width="*" MinWidth="70" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}"/>
+                <DataGridTextColumn Header="Подразделение" IsReadOnly="True" Binding="{Binding SubdivisionId}" Width="*" MinWidth="100" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}"/>
+                <DataGridTextColumn Header="Имя солдата" IsReadOnly="True" Binding="{Binding SoldierName}" Width="*" MinWidth="100" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}"/>
+                <DataGridTextColumn Header="Фамилия солдата" IsReadOnly="True" Binding="{Binding SoldierSurname}" Width="*" MinWidth="110" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}"/>
+                <DataGridTextColumn Header="Дата рождения" IsReadOnly="True" Binding="{Binding DateBirth, StringFormat='dd.MM.yyyy'}" Width="*" MinWidth="100" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}"/>
+                <DataGridTextColumn Header="Рост, см" IsReadOnly="True" Binding="{Binding Growth}" Width="65" MinWidth="50" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}"/>
+                <DataGridTextColumn Header="Вес, кг" IsReadOnly="True" Binding="{Binding Weight}" Width="60" MinWidth="50" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}"/>
+                <DataGridTextColumn Header="Звание" IsReadOnly="True" Binding="{Binding Rank}" Width="*" MinWidth="90" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}"/>
+                <DataGridTextColumn Header="Дата получения звания" IsReadOnly="True" Binding="{Binding DateGiveRank, StringFormat='dd.MM.yyyy'}" Width="*" MinWidth="140" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}"/>
+                <DataGridTextColumn Header="Должность" IsReadOnly="True" Binding="{Binding Post}" Width="*" MinWidth="50" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}"/>
+                <DataGridTextColumn Header="Форма службы" IsReadOnly="True" Binding="{Binding DutyForm}" Width="*" MinWidth="110" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}"/>
+                <DataGridTextColumn Header="Дата мобилизации" IsReadOnly="True" Binding="{Binding DateMobilization, StringFormat='dd.MM.yyyy'}" Width="*" MinWidth="115" ElementStyle="{StaticResource WrappedTextBlockStyle}" HeaderStyle="{StaticResource CenteredHeaderStyle}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

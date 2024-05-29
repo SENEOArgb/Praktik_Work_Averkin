@@ -1,0 +1,16 @@
+﻿<Window x:Class="Praktik_Work_2.Views.HelpView.WindowHelp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Praktik_Work_2.Views.HelpView"
+        mc:Ignorable="d"
+        Title="Ознакомительная информация" Height="450" Width="800" WindowStyle="SingleBorderWindow" Background="#F5F5DC">
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="Справочник командира" FontSize="20" FontWeight="ExtraBold" Margin="0 20 0 0"/>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="620" Height="270" FontSize="25"
+                   Text="Данное приложение разработано для просмотра информации о воинских подразделениях и их составах в виде списка подразделений, бойцов и информации о них.
+                                                   Для просмотра списков выберите один из пунктов меню в панели.                                                          Для взаимодействия с данными внутри них нажимайте характерные кнопки для определенных действий." 
+                   TextWrapping="Wrap"/>
+    </Grid>
+</Window>

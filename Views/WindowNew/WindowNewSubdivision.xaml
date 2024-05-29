@@ -1,0 +1,50 @@
+﻿<Window x:Class="Praktik_Work_2.Views.WindowNew.WindowNewSubdivision"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Praktik_Work_2.Views.WindowNew"
+        mc:Ignorable="d"
+        Title="WindowNewSubdivision" Height="400" Width="570" Background="#F5F5DC">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="75*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Название подразделения:" HorizontalAlignment="Right" 
+               VerticalAlignment="Top" Margin="0 65 5 0"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Код подразделения:" HorizontalAlignment="Right" 
+               VerticalAlignment="Top" Margin="5 20 5 0"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Командир подразделения:" HorizontalAlignment="Right" 
+               VerticalAlignment="Top" Margin="5 60 5 0"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Расположение подразделения:" HorizontalAlignment="Right"
+               VerticalAlignment="Top" Margin="5 20 5 0 "/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Дата основания:" HorizontalAlignment="Right"
+               VerticalAlignment="Top" Margin="5 60 5 0 "/>
+        <TextBox x:Name="SubName" Grid.Row="0" Grid.Column="1" Height="20" Width="130" HorizontalAlignment="Left" 
+             VerticalAlignment="Top" Margin="5 65 0 0" Text="{Binding SubdivisionName}"/>
+        <TextBox x:Name="TbNum" Grid.Row="1" Grid.Column="1" Height="20" Width="130" HorizontalAlignment="Left" 
+             VerticalAlignment="Top" Margin="5 20 0 0" Text="{Binding SubdivisionNumber}"/>
+        <TextBox x:Name="TbComm" Grid.Row="1" Grid.Column="1" Height="20" Width="130" HorizontalAlignment="Left" 
+             VerticalAlignment="Top" Margin="5 60 0 0" Text="{Binding SubdivisionCommander}"/>
+        <TextBox x:Name="TbLocate" Grid.Row="2" Grid.Column="1" Height="20" Width="130" HorizontalAlignment="Left"
+             VerticalAlignment="Top" Margin="5 20 0 0" Text="{Binding SubdivisionLocate}"/>
+        <TextBox x:Name="TbDate" Grid.Row="2" Grid.Column="1" Height="20" Width="130" HorizontalAlignment="Left"
+             VerticalAlignment="Top" Margin="5 60 0 0" Text="{Binding DateAppear, StringFormat='dd.MM.yyyy'}"/>
+
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="BtSave" Width="120" Content="Добавить" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center"
+                    Margin="5,10,10,5" IsDefault="True"  BorderBrush="Black" BorderThickness="1"
+                    Foreground="White" Background="#006600" Click="BtSave_Click" FontSize="17"/>
+            <Button x:Name="BtCansel" Width="120" Content="Отменить" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                    Margin="40,10,10,5" Foreground="White" Background="#AA5500" IsCancel="True" FontSize="17"/>
+        </StackPanel>
+    </Grid>
+</Window>
